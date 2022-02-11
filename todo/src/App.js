@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"
 
-function App() {
+const List = () => {
+  function input (props)
+
+  const [item, setItems] = useState([""])
+  const addHandler = () => {
+    let storedList = [...item];
+    storedList.push(item[item.length -1] +1)
+    setItems(storedList)
+  }
+  const removeHandler = () => {
+    let storedList = [...item];
+    storedList.splice(item[item.length -1] -1)
+    setItems(storedList)
+  };
+  const removeHandlerNum = (index) => {
+    let storedList=[...List];
+    storedList.splice(index, 1);
+    setItems(storedList)
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div>
+      <h1 class="title">Shopping List</h1>
+      <h2>(Short list of instructions)</h2>
+      {item.map((item, index) => {
+        return <h4 onClick={() => removeHandlerNum(index)} key={index}>{item}</h4>})}
+      <button onClick={() => addHandler()}>ADD</button>
+      <button onClick={() => removeHandler()}>REMOVE ALL</button>
+    </div>)
 }
 
-export default App;
+export default List
