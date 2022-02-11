@@ -1,8 +1,6 @@
 import { useState } from "react"
 
 const List = () => {
-  function input (props)
-
   const [item, setItems] = useState([""])
   const addHandler = () => {
     let storedList = [...item];
@@ -26,6 +24,12 @@ const List = () => {
       <h2>(Short list of instructions)</h2>
       {item.map((item, index) => {
         return <h4 onClick={() => removeHandlerNum(index)} key={index}>{item}</h4>})}
+      <form>
+        <label>
+          <input type="text" name="item" /> 
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
       <button onClick={() => addHandler()}>ADD</button>
       <button onClick={() => removeHandler()}>REMOVE ALL</button>
     </div>)
