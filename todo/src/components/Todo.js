@@ -27,10 +27,12 @@ function Todo({todos, completeTodo, removeTodo, updateTodo}) {
         <div key={todo.id} onClick={() => completeTodo(todo.id)}>
             {todo.text}
         </div>
+
         <div className="icons">
             <MdDeleteOutline onClick={() => removeTodo(todo.id)} className="delete-icon"/>
             <AiOutlineEdit onClick={() => setEdit({id: todo.id, value: todo.text})} className="edit-icon"/>
         </div>
+        
     </div>
   ))
 }
