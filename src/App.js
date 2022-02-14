@@ -1,53 +1,54 @@
-import react, { useState, useEffect, useRef } from "react";
+import react, { useState, useEffect, useRef } from 'react';
 import './App.css';
-import { MdDeleteOutline } from 'react-icons/md';
-import { AiOutlineEdit } from 'react-icons/ai';
+// import { MdDeleteOutline } from 'react-icons/md';
+// import { AiOutlineEdit } from 'react-icons/ai';
 
 function App() {
-    const [items, setItems] = useState([]);
-    // const addList = list => {
-    //     if (!list.text || /^\s*$/.test(list.text)) {
-    //         return;
-    //     }
+    class TodoItem {
+        constructor(key, text) {
+            this.key = key;
+            this.text = text;
+        }
+    }
 
-    //     const newList = [list, ...items];
+    let [state, setState] = useState({ items: [], creationCount: 0 });
+    window.state = state;
 
-    //     setItems(newList);
-    //     console.log(...items);
-    // }
+    function addTodoItem(string) {
+        state.items.push(new TodoItem(state.creationCount, string));
+        state.creationCount++;
+        setState({ ...state });
+    }
+
+    function removeTodoItem(key) {
+        state.items = state.items.filter((item) => item.key !== key);
+        setState({ ...state });
+    }
 
     return (
         <div>
             <h1>Shopping List</h1>
+
             <h2>(To delete, click on the list item)</h2>
-            <div id="list_items_container">
-                {items.map((item, index) => (
-                    <div id="list_items">
-                        <a onClick={() => setItems(items.filter((_, ind) => ind !== index))}>
-                            {item}
-                        </a>
+
+            <div id="list-items-container">
+                {state.items.map(todoItem =>
+                    <div className="list-item" key={todoItem.key}>
+                        <a onClick={() => removeTodoItem(todoItem.key)}>{todoItem.text}</a>
                     </div>
-                ))}
+                )}
             </div>
+
             <form onSubmit={(e) => {
+                addTodoItem(new FormData(e.currentTarget).get('todo'));
                 e.preventDefault();
-                const formData = new FormData(e.currentTarget);
-                setItems((items) => [...items, formData.get("todo")])
                 e.currentTarget.reset();
             }}>
                 <input name="todo" required />
                 <button type="submit">Add to List</button>
             </form>
-            {/* <form className="list_form" onSubmit={addItem}>
-                <input className="list_input" type="text" placeholder="Enter Item" value={input} name={text} />
-                <div className="icons">
-                    <MdDeleteOutline onClick={removeListItem} className="delete-icon" />
-                    <AiOutlineEdit onClick={editItem} className="edit-icon" />
-                </div>
-                <button className="add_button">Add to List</button>
-            </form> */}
         </div>
-    )
+    );
 }
 
-export default App
+export default App;
