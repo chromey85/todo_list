@@ -17,9 +17,9 @@ function App() {
     // }
 
     return (
-        <div>
+        <div className="all">
             <h1>Shopping List</h1>
-            <h2>(To delete, click on the list item)</h2>
+            <h2>(To Delete, Click on the Item)</h2>
             <div id="list_items_container">
                 {items.map((item, index) => (
                     <div id="list_items">
@@ -36,7 +36,7 @@ function App() {
                 e.currentTarget.reset();
             }}>
                 <input name="todo" required />
-                <button type="submit">Add to List</button>
+                <button className="submitButton" type="submit">Add to List</button>
             </form>
             {/* <form className="list_form" onSubmit={addItem}>
                 <input className="list_input" type="text" placeholder="Enter Item" value={input} name={text} />

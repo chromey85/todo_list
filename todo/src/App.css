@@ -1,25 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Merriweather+Sans:wght@300&display=swap');
+
+
 #root {
   display: flex;
   justify-content: space-around;
 }
 
+body {
+  background: linear-gradient( 90deg, rgba(48, 16, 255, 1) 0%, 
+  rgba(100, 115, 255, 1) 100% );
+}
+
 h1 {
   display: flex;
   justify-content: center;
+  font-family:  'Dancing Script', cursive;
+  font-size: XXX-large;
 }
 
 h2 {
   display: flex;
   justify-content: center;
+  font-family:  'Merriweather Sans', sans-serif;
+  font-size: medium;
 }
 
 form {
   display: flex;
   justify-content: center;
+  padding-top: 25px;
 }
 
 a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #fff;
+  font-size: x-large;
+}
+
+button {
+  padding: 16px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+    90deg,
+    rgba(93, 12, 255, 1) 0%,
+    rgba(155, 0, 250, 1) 100%
+  );
+  color: #fff;
+  text-transform: capitalize;
+}
+
+#list_items {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background: #161a2b;
+  text-align: center;
+  margin: 5px auto;
+  border-radius: 10px;
 }
